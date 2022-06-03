@@ -40,7 +40,7 @@ class SlideDrawer extends StatefulWidget {
   final Widget? contentDrawer;
 
   /// List of [MenuItem] to be used to generate the default content drawer
-  final List<MenuItem> items;
+  final List<NewMenuItem> items;
 
   /// Duration of the drawer sliding animation
   ///
@@ -99,19 +99,16 @@ class SlideDrawer extends StatefulWidget {
     this.onWillPop,
   }) : super(key: key);
 
-  static _SlideDrawerState? of(BuildContext context) =>
-      context.findAncestorStateOfType<_SlideDrawerState>();
+  static _SlideDrawerState? of(BuildContext context) => context.findAncestorStateOfType<_SlideDrawerState>();
 
   @override
   _SlideDrawerState createState() => _SlideDrawerState();
 }
 
-class _SlideDrawerState extends State<SlideDrawer>
-    with SingleTickerProviderStateMixin {
+class _SlideDrawerState extends State<SlideDrawer> with SingleTickerProviderStateMixin {
   bool _canBeDragged = false;
   double _minDragStartEdge = 60;
-  double get _maxSlide =>
-      MediaQuery.of(context).size.width - widget.offsetFromRight;
+  double get _maxSlide => MediaQuery.of(context).size.width - widget.offsetFromRight;
   double get _maxDragStartEdge => _maxSlide - 16;
 
   bool get _hasReverseCurve => widget.reverseCurve != null;
@@ -141,8 +138,7 @@ class _SlideDrawerState extends State<SlideDrawer>
       duration: widget.duration,
       curve: widget.curve,
       reverseCurve: _hasReverseCurve ? widget.reverseCurve : widget.curve,
-      reverseDuration:
-          _hasReverseDuration ? widget.reverseDuration : widget.duration,
+      reverseDuration: _hasReverseDuration ? widget.reverseDuration : widget.duration,
       debugLabel: 'SlideDrawer',
     );
 
@@ -159,11 +155,9 @@ class _SlideDrawerState extends State<SlideDrawer>
   toggle() => isOpened ? close() : open();
 
   _onDragStart(DragStartDetails details) {
-    bool isDragOpenFromLeft =
-        _animation.isDismissed && details.globalPosition.dx < _minDragStartEdge;
+    bool isDragOpenFromLeft = _animation.isDismissed && details.globalPosition.dx < _minDragStartEdge;
 
-    bool isDragCloseFromRight =
-        _animation.isCompleted && details.globalPosition.dx > _maxDragStartEdge;
+    bool isDragCloseFromRight = _animation.isCompleted && details.globalPosition.dx > _maxDragStartEdge;
 
     _canBeDragged = isDragOpenFromLeft || isDragCloseFromRight;
   }
@@ -183,8 +177,7 @@ class _SlideDrawerState extends State<SlideDrawer>
     }
 
     if (details.velocity.pixelsPerSecond.dx.abs() >= _kMinFlingVelocity) {
-      double visualVelocity = details.velocity.pixelsPerSecond.dx /
-          MediaQuery.of(context).size.width;
+      double visualVelocity = details.velocity.pixelsPerSecond.dx / MediaQuery.of(context).size.width;
 
       _animation.fling(velocity: visualVelocity);
     } else if (_animation.value < 0.5) {

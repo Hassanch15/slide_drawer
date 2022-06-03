@@ -8,7 +8,7 @@ class SlideDrawerContainer extends StatelessWidget {
   final Widget? drawer;
   final Widget? head;
   final Widget? content;
-  final List<MenuItem> items;
+  final List<NewMenuItem> items;
   final double paddingRight;
 
   /// The gradient to use for the background.
@@ -57,8 +57,7 @@ class SlideDrawerContainer extends StatelessWidget {
     SlideDrawerAlignment? _alignment = alignment;
 
     if (_alignment == null) {
-      _alignment =
-          _hasHead ? SlideDrawerAlignment.start : SlideDrawerAlignment.center;
+      _alignment = _hasHead ? SlideDrawerAlignment.start : SlideDrawerAlignment.center;
     }
 
     bool _isAlignTop = _alignment == SlideDrawerAlignment.start;
@@ -72,12 +71,9 @@ class SlideDrawerContainer extends StatelessWidget {
                   : BoxDecoration(color: backgroundColor ?? theme.primaryColor),
               child: SafeArea(
                 child: Theme(
-                  data: ThemeData(
-                      brightness: brightness ?? theme.primaryColorBrightness),
+                  data: ThemeData(brightness: brightness ?? theme.primaryColorBrightness),
                   child: Column(
-                    mainAxisAlignment: _isAlignTop
-                        ? MainAxisAlignment.start
-                        : MainAxisAlignment.center,
+                    mainAxisAlignment: _isAlignTop ? MainAxisAlignment.start : MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       if (_hasHead) head!,
@@ -87,7 +83,7 @@ class SlideDrawerContainer extends StatelessWidget {
                           child: content,
                         ),
                       if (!_hasContent && _hasItems)
-                        for (MenuItem item in items)
+                        for (NewMenuItem item in items)
                           Container(
                             margin: EdgeInsets.only(right: paddingRight),
                             child: MenuItemWidget(item: item),
@@ -102,7 +98,7 @@ class SlideDrawerContainer extends StatelessWidget {
 }
 
 class MenuItemWidget extends StatelessWidget {
-  final MenuItem item;
+  final NewMenuItem item;
 
   MenuItemWidget({Key? key, required this.item}) : super(key: key);
 

@@ -32,47 +32,31 @@ class _AppState extends State<App> {
   bool get _isHeadContent => type == SlideDrawerExampleType.HEAD_CONTENT_DRAWER;
   bool get _isFullDrawer => type == SlideDrawerExampleType.FULL_DRAWER;
 
-  List<MenuItem> get _items => [
-        MenuItem('Basic',
-            onTap: () => _changeType(SlideDrawerExampleType.BASIC)),
-        MenuItem('Custom Background',
-            onTap: () => _changeType(SlideDrawerExampleType.BACKGROUND)),
-        MenuItem('Custom Gradient',
-            onTap: () => _changeType(SlideDrawerExampleType.GRADIENT)),
-        MenuItem('Custom Header',
-            onTap: () => _changeType(SlideDrawerExampleType.HEAD_DRAWER)),
-        MenuItem('Custom Content',
-            onTap: () => _changeType(SlideDrawerExampleType.CONTENT_DRAWER)),
-        MenuItem('Header and Content',
-            onTap: () =>
-                _changeType(SlideDrawerExampleType.HEAD_CONTENT_DRAWER)),
-        MenuItem('Full Drawer',
-            onTap: () => _changeType(SlideDrawerExampleType.FULL_DRAWER)),
+  List<NewMenuItem> get _items => [
+        NewMenuItem('Basic', onTap: () => _changeType(SlideDrawerExampleType.BASIC)),
+        NewMenuItem('Custom Background', onTap: () => _changeType(SlideDrawerExampleType.BACKGROUND)),
+        NewMenuItem('Custom Gradient', onTap: () => _changeType(SlideDrawerExampleType.GRADIENT)),
+        NewMenuItem('Custom Header', onTap: () => _changeType(SlideDrawerExampleType.HEAD_DRAWER)),
+        NewMenuItem('Custom Content', onTap: () => _changeType(SlideDrawerExampleType.CONTENT_DRAWER)),
+        NewMenuItem('Header and Content',
+            onTap: () => _changeType(SlideDrawerExampleType.HEAD_CONTENT_DRAWER)),
+        NewMenuItem('Full Drawer', onTap: () => _changeType(SlideDrawerExampleType.FULL_DRAWER)),
       ];
 
-  List<MenuItem> get _itemsIcon => [
-        MenuItem('Basic',
-            icon: Icons.rss_feed,
-            onTap: () => _changeType(SlideDrawerExampleType.BASIC)),
-        MenuItem('Custom Background',
-            icon: Icons.favorite_border,
-            onTap: () => _changeType(SlideDrawerExampleType.BACKGROUND)),
-        MenuItem('Custom Gradient',
-            icon: Icons.mail_outline,
-            onTap: () => _changeType(SlideDrawerExampleType.GRADIENT)),
-        MenuItem('Custom Header',
-            icon: Icons.map,
-            onTap: () => _changeType(SlideDrawerExampleType.HEAD_DRAWER)),
-        MenuItem('Custom Content',
-            icon: Icons.person_outline,
-            onTap: () => _changeType(SlideDrawerExampleType.CONTENT_DRAWER)),
-        MenuItem('Header and Content',
-            icon: Icons.alarm,
-            onTap: () =>
-                _changeType(SlideDrawerExampleType.HEAD_CONTENT_DRAWER)),
-        MenuItem('Full Drawer',
-            icon: Icons.settings,
-            onTap: () => _changeType(SlideDrawerExampleType.FULL_DRAWER)),
+  List<NewMenuItem> get _itemsIcon => [
+        NewMenuItem('Basic', icon: Icons.rss_feed, onTap: () => _changeType(SlideDrawerExampleType.BASIC)),
+        NewMenuItem('Custom Background',
+            icon: Icons.favorite_border, onTap: () => _changeType(SlideDrawerExampleType.BACKGROUND)),
+        NewMenuItem('Custom Gradient',
+            icon: Icons.mail_outline, onTap: () => _changeType(SlideDrawerExampleType.GRADIENT)),
+        NewMenuItem('Custom Header',
+            icon: Icons.map, onTap: () => _changeType(SlideDrawerExampleType.HEAD_DRAWER)),
+        NewMenuItem('Custom Content',
+            icon: Icons.person_outline, onTap: () => _changeType(SlideDrawerExampleType.CONTENT_DRAWER)),
+        NewMenuItem('Header and Content',
+            icon: Icons.alarm, onTap: () => _changeType(SlideDrawerExampleType.HEAD_CONTENT_DRAWER)),
+        NewMenuItem('Full Drawer',
+            icon: Icons.settings, onTap: () => _changeType(SlideDrawerExampleType.FULL_DRAWER)),
       ];
 
   _changeType(type) {
